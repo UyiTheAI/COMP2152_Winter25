@@ -80,16 +80,6 @@ for weapon in weapons:
 loot_options = ["Health Potion", "Poison Potion", "Secret Note", "Leather Boots", "Flimsy Gloves"]
 good_loot_options = ["Health Potion", "Leather Boots"]
 bad_loot_options = ["Poison Potion"]
-# LAB04 - Q4
-belt = []
-
-# LAB04 - Q1
-# Monster dictionary
-monDictionary = {
-    "Fire Magic": 2,
-    "Freeze Time": 4,
-    "Super Hearing": 6,
-}
 
 # Define the number of stars awarded to the Player
 num_stars = 0
@@ -154,53 +144,12 @@ input("Roll the dice for the monster's health points (Press enter)")
 m_health_points = random.choice(diceOptions)
 print("Player rolled " + str(m_health_points) + " health points for the monster")
 
-# LAB04 - Q5 -- item 1
-print("You find a loot bag! Look inside to find 2 items!")
-input("Roll for the first item (Press enter)")
-lootRoll = random.choice(range(1, len(loot_options) + 1))
-loot = loot_options.pop(lootRoll - 1)
-belt.append(loot)
-print("Your belt: ", belt)
-
-# LAB04 - Q6 -- item 2
-print("You find a loot bag! Look inside to find 2 items!")
-input("Roll for the second item (Press enter)")
-lootRoll = random.choice(range(1, len(loot_options) + 1))
-loot = loot_options.pop(lootRoll - 1)
-belt.append(loot)
-print("Your belt: ", belt)
-
-# LAB04 - Q7 -- Sort the belt
-belt.sort()
-print("Your belt items sorted as follow: ", belt)
-
-# LAB04 - Q8 Use the belt
-print("You saw a Monster! Quickly use your fist item!")
-first_item = belt.pop(0)
-if first_item in good_loot_options:
-    health_points = min(6, (health_points + 2))
-    print(f"You used the {first_item}, and your health changed to {health_points}")
-elif first_item in bad_loot_options:
-    health_points = max(0, (health_points-2))
-    print(f"You used the {first_item}, and your health changed to {health_points}")
-else:
-    print(f"You used the {first_item}, but your health is low")
-
 input("Analyze the roll (Press enter)")
 # Compare Player vs Monster's strength
 print("--- You are matched in strength: " + str(combat_strength == m_combat_strength))
 
 # Check the Player's overall strength and health
 print("--- You have a strong player: " + str((combat_strength + health_points) >= 15))
-
-# LAB04 - Q2
-input("Roll for rhe Monstor Power (Press enter)")
-pRoll = random.choice(["Fire Magic", "Freeze Time", "Super Hearing"])
-
-#LAB04 - Q3 
-m_combat_strength = min(6, m_combat_strength + monDictionary)
-print("The Monster Combat Strength is: " + str(m_combat_strength) + "Using the" + monDictionary + "Magic Power!")
-
 
 # Loop while the monster and the player are alive. Call fight sequence functions
 print("You meet the monster. FIGHT!!")
